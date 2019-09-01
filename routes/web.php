@@ -12,9 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.home');
 });
 
-Route::get('/a', function () {
-    return view('welcome1');
+Route::get('/visi-misi', function () {
+    return view('front.profil.visimisi');
+});
+
+Route::get('/pengurus', function () {
+    return view('front.profil.pengurus');
+});
+
+Route::get('/berita', function () {
+    return view('front.informasi.berita.index');
+});
+Route::get('/berita/1', function () {
+    return view('front.informasi.berita.show');
 });
