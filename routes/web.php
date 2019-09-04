@@ -11,8 +11,28 @@
 |
 */
 
+Route::prefix('epanel')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dasbor');
+    });
+    
+    
+    Route::get('/profil', function () {
+        return view('admin.profil');
+    });
+});
+
 Route::get('/', function () {
     return view('front.home');
+});
+
+Route::get('/epanel', function () {
+    return view('admin.dasbor');
+});
+
+
+Route::get('/epanel/profil', function () {
+    return view('admin.profil');
 });
 
 Route::get('/visi-misi', function () {
@@ -29,3 +49,6 @@ Route::get('/berita', function () {
 Route::get('/berita/1', function () {
     return view('front.informasi.berita.show');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
