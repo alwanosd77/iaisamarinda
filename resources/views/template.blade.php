@@ -40,10 +40,12 @@
             <li class="nav-item dropdown ml-4 mb-0">
               <a class="nav-link dropdown-toggle waves-effect waves-light font-weight-bold" id="navbarDropdownMenuLink"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PROFIL</a>
+
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item waves-effect waves-light" href="/visi-misi">Visi - Misi</a>
+                @foreach($profil as $profiles)
+                <a class="dropdown-item waves-effect waves-light" href="{{route('profil',$profiles->slug)}}">{{$profiles->judul }}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="/pengurus">Daftar Pengurus</a>
+                @endforeach
               </div>
             </li>
             <li class="nav-item dropdown ml-4 mb-0">
@@ -74,9 +76,10 @@
                 id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">KONTAK</a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-3">
-                <a class="dropdown-item waves-effect waves-light" href="../author page/v-1.html">SEKRETARIAT</a>
+                @foreach($kontak as $kontakes)
+                <a class="dropdown-item waves-effect waves-light" href="{{route('kontak',$kontakes->slug)}}">{{$kontakes->judul }}</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../author page/v-2.html">KOOR WILAYAH</a>
+                @endforeach
             </li>
             <li class="nav-item ml-4 mb-0">
               <a class="nav-link waves-effect waves-light font-weight-bold" href="#">PERATURAN

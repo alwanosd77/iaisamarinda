@@ -13,14 +13,13 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
-    <link rel="stylesheet" href="../node_modules/weathericons/css/weather-icons.min.css">
-    <link rel="stylesheet" href="../node_modules/weathericons/css/weather-icons-wind.min.css">
-    <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
+
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('stisla/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('stisla/assets/css/components.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
     @yield('css')
 </head>
 
@@ -69,7 +68,7 @@
                             <a href="/epanel" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         <li>
-                            <a class="nav-link" href="/epanel/profil">
+                            <a class="nav-link" href="{{route('admin.profil')}}">
                                 <i class="fas fa-user-ninja"></i>
                                 <span>Profil</span>
                             </a>
@@ -90,7 +89,7 @@
                                 </a>
                             </li>
                         <li>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{route('admin.kontak')}}">
                                 <i class="fas fa-id-card-alt    "></i>
                                 <span>Kontak</span>
                             </a>
@@ -155,16 +154,14 @@
     <script src="{{asset('stisla/assets/js/stisla.js')}}"></script>
 
     <!-- JS Libraies -->
-    <script src="../node_modules/simpleweather/jquery.simpleWeather.min.js"></script>
-    <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
-    <script src="../node_modules/jqvmap/dist/jquery.vmap.min.js"></script>
-    <script src="../node_modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../node_modules/summernote/dist/summernote-bs4.js"></script>
-    <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
 
     <!-- Template JS File -->
     <script src="{{asset('stisla/assets/js/scripts.js')}}"></script>
     <script src="{{asset('stisla/assets/js/custom.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    @include('sweet::alert')
 
     <!-- Page Specific JS File -->
     @yield('js')
