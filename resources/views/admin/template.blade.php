@@ -39,7 +39,7 @@
                             class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="{{asset('stisla/assets/img/avatar/avatar-1.png')}}"
                                 class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Admin</div>
+                            <div class="d-sm-none d-lg-inline-block">Hi, {{Auth::user()->name}}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Selamat Datang</div>
@@ -47,9 +47,13 @@
                                 <i class="far fa-user"></i> Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                            <a href="" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                         </div>
                     </li>
                 </ul>
@@ -77,7 +81,7 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-columns"></i> <span>Informasi</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="">Berita</a></li>
+                                <li><a class="nav-link" href="{{route('admin.berita')}}">Berita</a></li>
                                 <li><a class="nav-link" href="">Agenda</a></li>
                                 <li><a class="nav-link" href="">Artikel</a></li>
                             </ul>

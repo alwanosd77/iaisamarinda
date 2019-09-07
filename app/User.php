@@ -5,7 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Agenda;
+use App\Berita;
+use App\Pengumuman;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'username', 'password','level'
     ];
 
     /**
@@ -36,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function berita()
+    {
+        return $this->hasMany(Berita::class);
+    }
+    public function agenda()
+    {
+        return $this->hasMany(Agenda::class);
+    }
+    public function pengumuman()
+    {
+        return $this->hasMany(Pengumuman::class);
+    }
 }
