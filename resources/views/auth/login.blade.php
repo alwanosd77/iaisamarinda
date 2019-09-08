@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V1</title>
+	<title>Ikatan Apoteker Indonesia Cabang Samarinda - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{asset('loginlay/images/icons/favicon.ico')}}"/>
+	<link rel="icon" type="image/png" href="{{asset('mdb/img/logo.png')}}"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{{asset('loginlay/vendor/bootstrap/css/bootstrap.min.css')}}">
 <!--===============================================================================================-->
@@ -27,7 +27,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="{{asset('loginlay/images/img-01.png')}}" alt="IMG">
+					<img src="{{asset('mdb/img/logo.png')}}" alt="IMG">
 				</div>
 
 				<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">

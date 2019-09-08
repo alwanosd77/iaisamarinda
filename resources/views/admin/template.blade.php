@@ -82,8 +82,8 @@
                                     class="fas fa-columns"></i> <span>Informasi</span></a>
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="{{route('admin.berita')}}">Berita</a></li>
-                                <li><a class="nav-link" href="">Agenda</a></li>
-                                <li><a class="nav-link" href="">Artikel</a></li>
+                                <li><a class="nav-link" href="{{route('admin.agenda')}}">Agenda</a></li>
+                                <li><a class="nav-link" href="{{route('admin.artikel')}}">Artikel</a></li>
                             </ul>
                         </li>
                         <li>

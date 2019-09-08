@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="section-header">
-    <h1>Berita</h1>
+    <h1>Artikel</h1>
     <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
         <div class="breadcrumb-item"><a href="#">Posts</a></div>
@@ -17,12 +17,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col-10">
-                        <h4>Tambah Berita</h4>
+                        <h4>Ubah Artikel</h4>
                     </div>
                 </div>
                 <div class="card-body">
                     <div class="clearfix mb-3"></div>
-                    <form role="form" action="{{route('admin.berita.store')}}" method="POST" enctype="multipart/form-data">
+                    <form role="form" action="{{route('admin.artikel.update',$artikel->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-8">
@@ -32,7 +32,7 @@
                                         
                                         <div class="form-group">
                                             <label for="judul" class="form-control-label">Judul</label>
-                                            <input type="text" name="judul" id="judul" placeholder="Judul Halaman" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}">
+                                            <input type="text" name="judul" id="judul" placeholder="Judul Artikel" class="form-control @error('judul') is-invalid @enderror" value="{{$artikel->judul}}">
                                             @error('judul')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -42,28 +42,13 @@
                                     </div>
                                 </div>
                                 {{-- judul --}}
-                                {{-- preview --}}
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="preview" class="form-control-label">Preview</label>
-                                            <input type="text" name="preview" id="preview" placeholder="Preview Halaman" class="form-control @error('preview') is-invalid @enderror" value="{{ old('preview') }}">
-                                            @error('preview')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- preview --}}
                                 {{-- isi --}}
                                 <div class="row">
                                     <div class="col-md-12">
                                         
                                         <div class="form-group">
                                             <label for="isi" class="form-control-label">Isi</label>
-                                            <textarea name="isi" id="isi" class="form-control @error('isi') is-invalid @enderror" rows="3">{{ old('isi') }}</textarea>
+                                            <textarea name="isi" id="isi" class="form-control @error('isi') is-invalid @enderror" rows="3">{{$artikel->isi}}</textarea>
                                             @error('isi')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -79,9 +64,9 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="cover" class="form-control-label">Cover Berita</label>
+                                            <label for="cover" class="form-control-label">Cover Artikel</label>
                                             <br>
-                                            <img src="https://via.placeholder.com/2040x710" id="profile-img-tag" class="img-fluid" />
+                                            <img src="{{asset('img/cover/artikel/'.$artikel->cover)}}" id="profile-img-tag" class="img-fluid" />
                                             <input type="file" name="cover" id="cover" class="form-control @error('cover') is-invalid @enderror" value="{{ old('cover') }}">
                                             @error('cover')
                                             <div class="invalid-feedback">
@@ -92,13 +77,13 @@
                                     </div>
                                 </div>
                                 {{-- cover --}}
-                                {{-- sumber --}}
+                                {{-- penulis --}}
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="sumber" class="form-control-label">Sumber</label>
-                                            <input type="text" name="sumber" id="sumber" placeholder="Sumber" class="form-control @error('sumber') is-invalid @enderror" value="{{ old('sumber') }}">
-                                            @error('sumber')
+                                            <label for="penulis" class="form-control-label">Penulis</label>
+                                            <input type="text" name="penulis" id="penulis" placeholder="penulis" class="form-control @error('penulis') is-invalid @enderror" value="{{$artikel->penulis}}">
+                                            @error('penulis')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -106,7 +91,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- sumber --}}
+                                {{-- penulis --}}
                                 {{-- draft --}}
                                 <div class="row">
                                     <div class="col-md-12">
@@ -115,14 +100,14 @@
                                             </label>
                                             <div class="selectgroup w-100">
                                                 <label class="selectgroup-item">
-                                                    <input type="radio" name="is_draft" value="0" class="selectgroup-input" checked><span class="selectgroup-button">
+                                                    <input type="radio" name="is_draft" value="0" class="selectgroup-input" @if($artikel->is_draft == 0) checked @endif><span class="selectgroup-button">
                                                         Terbitkan                                                     
                                                     </span>
                                                 </label>
                                             </div>
                                             <div class="selectgroup w-100">
                                                 <label class="selectgroup-item">
-                                                    <input type="radio" name="is_draft" value="1" class="selectgroup-input"><span class="selectgroup-button">
+                                                    <input type="radio" name="is_draft" value="1" class="selectgroup-input" @if($artikel->is_draft == 1) checked @endif><span class="selectgroup-button">
                                                         Draft                                                     
                                                     </span>
                                                 </label>
