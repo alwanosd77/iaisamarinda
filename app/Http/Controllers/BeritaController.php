@@ -60,7 +60,7 @@ class BeritaController extends Controller
             'preview'=>'required',
             'isi'=>'required',
             'sumber'=>'required',
-            'cover'=>'required',
+            'cover'=>'required|mimes:jpg,jpeg,png',
             'is_draft'=>'required',
         ]);
         $new_image_name ='';

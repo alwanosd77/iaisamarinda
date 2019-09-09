@@ -81,13 +81,41 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-columns"></i> <span>Informasi</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{route('admin.berita')}}">Berita</a></li>
-                                <li><a class="nav-link" href="{{route('admin.agenda')}}">Agenda</a></li>
-                                <li><a class="nav-link" href="{{route('admin.artikel')}}">Artikel</a></li>
+                                <li><a class="nav-link" href="{{route('admin.berita')}}">
+                                    <i class="fas fa-newspaper"></i>
+                                        <span>Berita</span>
+                                    
+                                </a></li>
+                                <li><a class="nav-link" href="{{route('admin.agenda')}}">
+                                    <i class="fas fa-calendar"></i>
+                                        <span>Agenda</span>
+                                    
+                                </a></li>
+                                <li><a class="nav-link" href="{{route('admin.artikel')}}">
+                                    <i class="fas fa-file"></i>
+                                    <span>Artikel</span>
+                                </a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
+                                    class="fas fa-plus"></i> <span>Features</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="{{route('admin.slider')}}">
+                                    <i class="fas fa-file-image"></i>
+                                        <span>Slider</span>
+                                    
+                                </a></li>
+                                <li><a class="nav-link" href="{{route('admin.link')}}">
+                                    <i class="fas fa-link"></i>
+                                        <span>Tautan</span>
+                                    
+                                </a></li>
+                                
                             </ul>
                         </li>
                         <li>
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{route('admin.album')}}">
                                     <i class="fas fa-camera    "></i>
                                     <span>Galeri</span>
                                 </a>
@@ -105,12 +133,6 @@
                             </a>
                         </li>
                         <li class="menu-header">WEB SETTING</li>
-                        <li>
-                            <a class="nav-link" href="">
-                                <i class="fa fa-link" aria-hidden="true"></i>
-                                <span>Tautan</span>
-                            </a>
-                        </li>
                         <li>
                             <a class="nav-link" href="">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>

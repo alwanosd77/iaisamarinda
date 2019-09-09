@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(BeritaSeeder::class);
         $this->call(ArtikelSeeder::class);
         $this->call(AgendaSeeder::class);
+        $this->call(LinkSeeder::class);
+        $this->call(SliderSeeder::class);
+        $this->call(AlbumSeeder::class);
+        $this->call(PhotoSeeder::class);
     }
 }

@@ -56,6 +56,36 @@ Route::group(['middleware'=>['web']],function(){
             Route::get('/agenda/delete/{id}', 'AgendaController@destroy')->name('admin.agenda.destroy');
             Route::get('/agenda/edit/{id}', 'AgendaController@edit')->name('admin.agenda.edit');
             Route::post('/agenda/update/{id}','AgendaController@update')->name('admin.agenda.update');
+
+            Route::get('/link/show/{id}', 'LinkController@show')->name('admin.link.show');
+            Route::get('/link', 'LinkController@index')->name('admin.link');
+            Route::get('/link/create/','LinkController@create')->name('admin.link.create');
+            Route::post('/link','LinkController@store')->name('admin.link.store');
+            Route::get('/link/delete/{id}', 'LinkController@destroy')->name('admin.link.destroy');
+            Route::get('/link/edit/{id}', 'LinkController@edit')->name('admin.link.edit');
+            Route::post('/link/update/{id}','LinkController@update')->name('admin.link.update');
+
+            Route::get('/slider/show/{id}', 'SliderController@show')->name('admin.slider.show');
+            Route::get('/slider', 'SliderController@index')->name('admin.slider');
+            Route::get('/slider/create/','SliderController@create')->name('admin.slider.create');
+            Route::post('/slider','SliderController@store')->name('admin.slider.store');
+            Route::get('/slider/delete/{id}', 'SliderController@destroy')->name('admin.slider.destroy');
+            Route::get('/slider/edit/{id}', 'SliderController@edit')->name('admin.slider.edit');
+            Route::post('/slider/update/{id}','SliderController@update')->name('admin.slider.update');
+
+            Route::get('/album/show/{id}', 'AlbumController@show')->name('admin.album.show');
+            Route::get('/album', 'AlbumController@index')->name('admin.album');
+            Route::get('/album/create/','AlbumController@create')->name('admin.album.create');
+            Route::post('/album','AlbumController@store')->name('admin.album.store');
+            Route::get('/album/delete/{id}', 'AlbumController@destroy')->name('admin.album.destroy');
+            Route::get('/album/edit/{id}', 'AlbumController@edit')->name('admin.album.edit');
+            Route::post('/album/update/{id}','AlbumController@update')->name('admin.album.update');
+
+            Route::get('/photo/create/{album}','PhotoController@create')->name('admin.photo.create');
+            Route::post('/photo/{album}','PhotoController@store')->name('admin.photo.store');
+            Route::get('/photo/delete/{id}', 'PhotoController@destroy')->name('admin.photo.destroy');
+            Route::post('/foto/hapus', 'PhotoController@delete')->name('foto.delete');
+
     
         });
     });

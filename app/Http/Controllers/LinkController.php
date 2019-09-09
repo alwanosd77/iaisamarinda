@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Artikel;
+use App\Link;
 use Alert;
 use Illuminate\Support\Str;
 use Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
-class ArtikelController extends Controller
+class LinkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,14 +19,12 @@ class ArtikelController extends Controller
     public function index()
     {
         if(request()->ajax()){
-            $artikel = Artikel::all();
-            return datatables()->of($artikel)->editColumn('uploader',function($artikel){
-                return $artikel->user->name;
-            })->addColumn('action',function($data){
-                $button = '<a href="/artikel/'.$data->slug.'" target="_blank"><button type="button" name="view" class="btn btn-success btn-sm m-auto"> <i class="fa fa-eye"></i>Visit</button>
+            $link = Link::all();
+            return datatables()->of($link)->addColumn('action',function($data){
+                $button = '<a href="'.$data->url.'" target="_blank"><button type="button" name="view" class="btn btn-success btn-sm m-auto"> <i class="fa fa-eye"></i>Visit</button>
                     </a>';
                 $button .= '&nbsp;&nbsp';
-                $button .= '<a href="artikel/edit/'.$data->slug.'"><button type="button" name="edit" class="btn btn-info btn-sm m-auto"> <i class="fa fa-edit"></i>Edit</button>
+                $button .= '<a href="link/edit/'.$data->slug.'"><button type="button" name="edit" class="btn btn-info btn-sm m-auto"> <i class="fa fa-edit"></i>Edit</button>
                     </a>';
                 $button .= '&nbsp;&nbsp';
                 $button .= '<button type="button" name="delete" id="'.$data->id.'" class="delete btn btn-danger btn-sm m-auto"> <i class="fa fa-trash "></i>Delete</button>
@@ -34,7 +32,7 @@ class ArtikelController extends Controller
                 return $button;
             })->rawColumns(['action'])->make(true);
         }
-        return view ('admin.informasi.artikel.index');
+        return view ('admin.fitur.tautan.index');
     }
 
     /**
@@ -44,7 +42,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view ('admin.informasi.artikel.create');
+        return view ('admin.fitur.tautan.create');
     }
 
     /**
@@ -56,37 +54,31 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul'=>'required',
-            'isi'=>'required',
-            'penulis'=>'required',
-            'cover'=>'required|mimes:jpg,jpeg,png',
-            'is_draft'=>'required',
+            'label'=>'required',
+            'url'=>'required',
+            'banner'=>'required|mimes:jpg,jpeg,png',
         ]);
         $new_image_name ='';
-        if (Input::file('cover') !== NULL) {
-            $image_upload = Input::file('cover');
+        if (Input::file('banner') !== NULL) {
+            $image_upload = Input::file('banner');
             $extension = $image_upload->getClientOriginalExtension();
-            $new_image_name = 'coverartikel-'. time() .'.'. $extension;
+            $new_image_name = 'tautan-'. time() .'.'. $extension;
 
-            $img_path = public_path('img/cover/artikel');
+            $img_path = public_path('img/tautan');
             $image_upload->move($img_path, $new_image_name);
         }
 
             $input = array(
-            'judul' => $request->judul,
-            'preview' => $request->preview,
-            'isi' => $request->isi,
-            'is_draft' => $request->is_draft,
-            'penulis' => $request->penulis,
-            'cover' => $new_image_name,
-            'slug' => $this->createSlug($request->judul),
-            'user_id' => Auth::id(),
+            'label' => $request->label,
+            'url' => $request->url,
+            'banner' => $new_image_name,
+            'slug' => $this->createSlug($request->label),
             );
-            Artikel::create($input);
+            Link::create($input);
         
         
         Alert::success('Data Berhasil Disimpan', 'Berhasil')->persistent('Close');
-        return redirect()->route('admin.artikel');
+        return redirect()->route('admin.link');
     }
 
     /**
@@ -108,8 +100,8 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
-        $artikel = Artikel::where('slug',$id)->firstOrFail();
-        return view ('admin.informasi.artikel.edit',compact('artikel'));
+        $link = Link::where('slug',$id)->firstOrFail();
+        return view ('admin.fitur.tautan.edit',compact('link'));
     }
 
     /**
@@ -121,55 +113,47 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $artikel = Artikel::findOrFail($id);
+        $link = Link::findOrFail($id);
         $request->validate([
-            'judul'=>'required',
-            'isi'=>'required',
-            'penulis'=>'required',
-            'is_draft'=>'required',
+            'label'=>'required',
+            'url'=>'required',
         ]);
         $slug ='';
-        if ($artikel->judul != $request->judul) {
-            $slug =  $this->createSlug($request->judul);
+        if ($link->label != $request->label) {
+            $slug =  $this->createSlug($request->label);
         }
         else{
-            $slug =  $artikel->slug;
+            $slug =  $link->slug;
         }
         $new_image_name ='';
-        if (Input::file('cover') !== NULL) {
-            File::delete(public_path('/img/cover/artikel/'.$artikel->cover));
-            $image_upload = Input::file('cover');
+        if (Input::file('banner') !== NULL) {
+            File::delete(public_path('/img/tautan/'.$link->banner));
+            $image_upload = Input::file('banner');
             $extension = $image_upload->getClientOriginalExtension();
-            $new_image_name = 'coverartikel-'. time() .'.'. $extension;
+            $new_image_name = 'tautan-'. time() .'.'. $extension;
 
-            $img_path = public_path('img/cover/artikel');
+            $img_path = public_path('img/tautan');
             $image_upload->move($img_path, $new_image_name);
             $input = array(
-                'judul' => $request->judul,
-                'isi' => $request->isi,
-                'is_draft' => $request->is_draft,
-                'penulis' => $request->penulis,
-                'cover' => $new_image_name,
-                'slug' => $slug,
-                'user_id' => Auth::id(),
+                'label' => $request->label,
+            'url' => $request->url,
+            'banner' => $new_image_name,
+            'slug' => $slug,
             );
         }
         else{
             $input = array(
-                'judul' => $request->judul,
-                'isi' => $request->isi,
-                'is_draft' => $request->is_draft,
-                'penulis' => $request->penulis,
-                'slug' => $slug,
-                'user_id' => Auth::id(),
+               'label' => $request->label,
+            'url' => $request->url,
+            'slug' => $slug,
             );
         }
             
-        $artikel->update($input);
+        $link->update($input);
         
         
         Alert::success('Data Berhasil Diubah', 'Berhasil')->persistent('Close');
-        return redirect()->route('admin.artikel');
+        return redirect()->route('admin.link');
     }
 
     /**
@@ -180,8 +164,8 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        $data =  Artikel::findOrFail($id);
-        File::delete(public_path('/img/cover/artikel/'.$data->cover));
+        $data =  Link::findOrFail($id);
+        File::delete(public_path('/img/tautan/'.$data->banner));
         $data->delete();
     }
     public function createSlug($title, $id=0){
@@ -200,6 +184,6 @@ class ArtikelController extends Controller
         
     }
     public function getRelatedSlugs($slug, $id=0){
-        return Artikel::select('slug')->where('slug','like', $slug.'%')->where('id','<>',$id)->get();
+        return Link::select('slug')->where('slug','like', $slug.'%')->where('id','<>',$id)->get();
     }
 }
