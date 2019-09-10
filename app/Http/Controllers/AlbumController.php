@@ -111,6 +111,7 @@ class AlbumController extends Controller
         $request->validate([
             'judul' => 'required',
         ]);
+        File::moveDirectory(public_path('img/album/'.$album->judul),public_path('img/album/'.$request->judul));
         if ($album->judul != $request->judul) {
             $input = array(
                 'judul' => $request->judul,
@@ -137,6 +138,7 @@ class AlbumController extends Controller
     public function destroy($id)
     {
         $data =  Album::findOrFail($id);
+        File::deleteDirectory(public_path('img/album/'.$data->judul));
         $data->delete();
     }
     public function createSlug($title, $id=0){

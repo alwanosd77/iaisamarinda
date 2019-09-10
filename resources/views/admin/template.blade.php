@@ -71,42 +71,42 @@
                         <li>
                             <a href="/epanel" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
-                        <li>
+                        <li class="{{ active(['admin.profil','admin.profil.*']) }}">
                             <a class="nav-link" href="{{route('admin.profil')}}">
                                 <i class="fas fa-user-ninja"></i>
                                 <span>Profil</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown {{ active(['admin.berita','admin.berita.*','admin.agenda','admin.agenda.*','admin.artikel','admin.artikel.*']) }}">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-columns"></i> <span>Informasi</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{route('admin.berita')}}">
+                                <li class="{{ active(['admin.berita','admin.berita.*']) }}"><a class="nav-link" href="{{route('admin.berita')}}">
                                     <i class="fas fa-newspaper"></i>
                                         <span>Berita</span>
                                     
                                 </a></li>
-                                <li><a class="nav-link" href="{{route('admin.agenda')}}">
+                                <li class="{{ active(['admin.agenda','admin.agenda.*']) }}"><a class="nav-link" href="{{route('admin.agenda')}}">
                                     <i class="fas fa-calendar"></i>
                                         <span>Agenda</span>
                                     
                                 </a></li>
-                                <li><a class="nav-link" href="{{route('admin.artikel')}}">
+                                <li class="{{ active(['admin.artikel','admin.artikel.*']) }}"><a class="nav-link" href="{{route('admin.artikel')}}">
                                     <i class="fas fa-file"></i>
                                     <span>Artikel</span>
                                 </a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown {{ active(['admin.slider','admin.slider.*','admin.link','admin.link.*']) }}">
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-plus"></i> <span>Features</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="{{route('admin.slider')}}">
+                                <li class="{{ active(['admin.slider','admin.slider.*']) }}"><a class="nav-link" href="{{route('admin.slider')}}">
                                     <i class="fas fa-file-image"></i>
                                         <span>Slider</span>
                                     
                                 </a></li>
-                                <li><a class="nav-link" href="{{route('admin.link')}}">
+                                <li class="{{ active(['admin.link','admin.link.*']) }}"><a class="nav-link" href="{{route('admin.link')}}">
                                     <i class="fas fa-link"></i>
                                         <span>Tautan</span>
                                     
@@ -114,27 +114,28 @@
                                 
                             </ul>
                         </li>
-                        <li>
+                        <li class="{{ active(['admin.album','admin.album.*','admin.photo','admin.photo.*']) }}">
                                 <a class="nav-link" href="{{route('admin.album')}}">
                                     <i class="fas fa-camera    "></i>
                                     <span>Galeri</span>
                                 </a>
                             </li>
-                        <li>
+                        <li class="{{ active(['admin.kontak','admin.kontak.*']) }}">
                             <a class="nav-link" href="{{route('admin.kontak')}}">
                                 <i class="fas fa-id-card-alt    "></i>
                                 <span>Kontak</span>
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="">
+                        <li class="{{ active(['admin.peraturan','admin.peraturan.*','admin.unduhan','admin.unduhan.*']) }}">
+                            <a class="nav-link" href="{{route('admin.peraturan')}}">
                                 <i class="fas fa-book-open    "></i>
                                 <span>Peraturan</span>
                             </a>
                         </li>
+                        @if(Auth::user()->level=="admin")
                         <li class="menu-header">WEB SETTING</li>
-                        <li>
-                            <a class="nav-link" href="">
+                        <li class="{{ active(['admin.umum','admin.umum.*']) }}">
+                            <a class="nav-link" href="{{route('admin.umum.edit')}}">
                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span>Informasi Umum</span>
                             </a>
@@ -145,6 +146,7 @@
                                 <span>Operator</span>
                             </a>
                         </li>
+                        @endif
                 </aside>
             </div>
 

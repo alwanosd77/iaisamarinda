@@ -10,13 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['middleware'=>['web']],function(){
-    Route::group(['middleware'=>['admin']],function(){
-        Route::prefix('epanel')->group(function () {
+    Route::group(['middleware'=>['operator']],function(){
+        
+            Route::prefix('epanel')->group(function () {
             Route::get('/', function () {
                 return view('admin.dasbor');
             });
-    
+
             Route::get('/kontak/show/{id}', 'KontakController@show')->name('admin.kontak.show');
             Route::get('/kontak', 'KontakController@index')->name('admin.kontak');
             Route::get('/kontak/create/','KontakController@create')->name('admin.kontak.create');
@@ -86,6 +88,33 @@ Route::group(['middleware'=>['web']],function(){
             Route::get('/photo/delete/{id}', 'PhotoController@destroy')->name('admin.photo.destroy');
             Route::post('/foto/hapus', 'PhotoController@delete')->name('foto.delete');
 
+            Route::get('/peraturan/show/{id}', 'PeraturanController@show')->name('admin.peraturan.show');
+            Route::get('/peraturan', 'PeraturanController@index')->name('admin.peraturan');
+            Route::get('/peraturan/create/','PeraturanController@create')->name('admin.peraturan.create');
+            Route::post('/peraturan','PeraturanController@store')->name('admin.peraturan.store');
+            Route::get('/peraturan/delete/{id}', 'PeraturanController@destroy')->name('admin.peraturan.destroy');
+            Route::get('/peraturan/edit/{id}', 'PeraturanController@edit')->name('admin.peraturan.edit');
+            Route::post('/peraturan/update/{id}','PeraturanController@update')->name('admin.peraturan.update');
+
+            Route::get('/unduhan/show/{id}', 'UnduhanController@show')->name('admin.unduhan.show');
+            Route::get('/unduhan', 'UnduhanController@index')->name('admin.unduhan');
+            Route::get('/unduhan/create/{peraturan}','UnduhanController@create')->name('admin.unduhan.create');
+            Route::post('/unduhan/{peraturan}','UnduhanController@store')->name('admin.unduhan.store');
+            Route::get('/unduhan/delete/{id}', 'UnduhanController@destroy')->name('admin.unduhan.destroy');
+            Route::get('/unduhan/edit/{id}', 'UnduhanController@edit')->name('admin.unduhan.edit');
+            Route::post('/unduhan/update/{id}','UnduhanController@update')->name('admin.unduhan.update');
+
+    
+        });
+    });
+    Route::group(['middleware'=>['admin']],function(){
+        
+            Route::prefix('epanel')->group(function () {
+            
+
+            Route::get('/umum/edit', 'UmumController@edit')->name('admin.umum.edit');
+            Route::post('/umum/update','UmumController@update')->name('admin.umum.update');
+
     
         });
     });
@@ -94,7 +123,7 @@ Route::group(['middleware'=>['web']],function(){
 
 
 
-
+Route::get('/download/{peraturan}/{filename}/{name}', 'UnduhanController@download');
 
 
 Route::get('/', 'FrontController@index')->name('home');

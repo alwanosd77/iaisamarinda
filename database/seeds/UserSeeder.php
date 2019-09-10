@@ -18,6 +18,12 @@ class UserSeeder extends Seeder
                 'level'=>'admin',
                 'password'=>Hash::make('admins')
             ],
+            [ 
+                'name'=>'Dauzic',
+                'level'=>'operator',
+                'username'=>'dauzic99',
+                'password'=>Hash::make('dauzic0123')
+            ],
         ]);
     }
 }

@@ -15,6 +15,8 @@ class CreatePeraturansTable extends Migration
     {
         Schema::create('peraturans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('label');
+            $table->string('slug');
             $table->timestamps();
         });
     }

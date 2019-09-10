@@ -19,7 +19,7 @@ class Operator
     {
         if(Auth::check())
         {
-            if (Auth::user()->level=="operator")
+            if (Auth::check())
             {
                 return $next($request);
 
