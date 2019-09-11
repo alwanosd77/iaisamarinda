@@ -68,8 +68,8 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">MENU UTAMA</li>
-                        <li>
-                            <a href="/epanel" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                        <li class="{{ active(['admin.dasbor']) }}">
+                            <a href="{{route('admin.dasbor')}}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
                         <li class="{{ active(['admin.profil','admin.profil.*']) }}">
                             <a class="nav-link" href="{{route('admin.profil')}}">
@@ -140,8 +140,8 @@
                                 <span>Informasi Umum</span>
                             </a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="">
+                        <li class="{{ active(['admin.operator','admin.operator.*']) }}">
+                            <a class="nav-link" href="{{route('admin.operator')}}">
                                 <i class="fas fa-user-lock    "></i>
                                 <span>Operator</span>
                             </a>

@@ -22,6 +22,8 @@ class BeritaController extends Controller
             $berita = Berita::all();
             return datatables()->of($berita)->editColumn('uploader',function($berita){
                 return $berita->user->name;
+            })->editColumn('created_at',function($berita){
+                return $berita->created_at->isoFormat('DD MMMM YYYY , hh:mm a');
             })->addColumn('action',function($data){
                 $button = '<a href="/berita/'.$data->slug.'" target="_blank"><button type="button" name="view" class="btn btn-success btn-sm m-auto"> <i class="fa fa-eye"></i>Visit</button>
                     </a>';

@@ -14,31 +14,36 @@
     }
 
 </style>
+    <div style="background-color: rgba(231, 231, 231,0.5)">
+    
+    <div class="container">
+    
       <div id="carousel-example-1z" class="carousel slide carousel-fade carousel-half" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-          <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+          @for($i = 0; $i<$countSlider; $i++)
+          <li data-target="#carousel-example-1z" data-slide-to="{{$i}}" class="@if($i==0)active @endif"></li>
+          @endfor
         </ol>
         <!-- Indicators -->
         <!-- Slides -->
         <div class="carousel-inner" role="listbox">
           <!-- First slide -->
-          <div class="carousel-item active">
+          @for($i = 0; $i<$countSlider; $i++)
+          <div class="carousel-item @if($i==0)active @endif">
             <div class="view h-100">
-              <img class="d-block h-100 w-lg-100" src="{{asset('img/slider/banner1.jpg')}}" width="100%" 
+              <img class="d-block h-100 w-lg-100" src="{{asset('img/slider/'.$slider[$i]->banner)}}" width="100%" 
                 alt="First slide">
               <div class="mask rgba-indigo-light">
                 <!-- Caption -->
                 <div class="full-bg-img flex-center white-text">
                   <ul class="animated fadeIn col-10 list-unstyled">
                     <li>
-                      <h1 class="h1-responsive font-weight-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                      <h1 class="h1-responsive font-weight-bold">{{$slider[$i]->judul}}
                       </h1>
                     </li>
                     <li>
-                      <p>Tempora incidunt ut labore et dolore veritatis et quasi architecto beatae</p>
+                      <p>{{$slider[$i]->subjudul}}</p>
                     </li>
 
                   </ul>
@@ -47,52 +52,9 @@
               </div>
             </div>
           </div>
+          @endfor
           <!-- First slide -->
-          <!-- Second slide -->
-          <div class="carousel-item h-100">
-            <div class="view h-100">
-              <img class="d-block h-100 w-lg-100" src="https://mdbootstrap.com/img/Photos/Others/city10.jpg" width="100%"
-                alt="Second slide">
-              <div class="mask rgba-stylish-light">
-                <!-- Caption -->
-                <div class="full-bg-img flex-center white-text">
-                  <ul class="animated fadeIn col-10 list-unstyled">
-                    <li>
-                      <h1 class="h1-responsive font-weight-bold">Nemo enim ipsam voluptatem quia voluptas sit </h1>
-                    </li>
-                    <li>
-                      <p>Nemo enim ipsamvoluptatem quia veritatis et quasi architecto beatae</p>
-                    </li>
-                  </ul>
-                </div>
-                <!-- Caption -->
-              </div>
-            </div>
-          </div>
-          <!-- Second slide -->
-          <!-- Third slide -->
-          <div class="carousel-item">
-            <div class="view h-100">
-              <img class="d-block h-100 w-lg-100" src="https://mdbootstrap.com/img/Photos/Others/city12.jpg" width="100%"
-                alt="Third slide">
-              <div class="mask rgba-black-light">
-                <!-- Caption -->
-                <div class="full-bg-img flex-center white-text">
-                  <ul class="animated fadeIn col-10 list-unstyled">
-                    <li>
-                      <h1 class="h1-responsive font-weight-bold">Sed ut perspiciatis unde omnis iste natus sit
-                        voluptatem</h1>
-                    </li>
-                    <li>
-                      <p>Unde omnis iste natus sit voluptatem veritatis et quasi architecto beatae</p>
-                    </li>
-                  </ul>
-                </div>
-                <!-- Caption -->
-              </div>
-            </div>
-          </div>
-          <!-- Third slide -->
+          
         </div>
         <!-- Slides -->
         <!-- Controls -->
@@ -106,4 +68,7 @@
         </a>
         <!-- Controls -->
       </div>
+</div>
+</div>
+
       <!-- Carousel Wrapper -->

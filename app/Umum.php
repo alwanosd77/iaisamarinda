@@ -10,7 +10,6 @@ class Umum extends Model
 'alamat',
 'telp',
 'email',
-'faks',
 'about',
 'facebook',
 'twitter',

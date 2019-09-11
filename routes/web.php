@@ -15,9 +15,7 @@ Route::group(['middleware'=>['web']],function(){
     Route::group(['middleware'=>['operator']],function(){
         
             Route::prefix('epanel')->group(function () {
-            Route::get('/', function () {
-                return view('admin.dasbor');
-            });
+            Route::get('/', 'DasborController@index')->name('admin.dasbor');
 
             Route::get('/kontak/show/{id}', 'KontakController@show')->name('admin.kontak.show');
             Route::get('/kontak', 'KontakController@index')->name('admin.kontak');
@@ -114,6 +112,14 @@ Route::group(['middleware'=>['web']],function(){
 
             Route::get('/umum/edit', 'UmumController@edit')->name('admin.umum.edit');
             Route::post('/umum/update','UmumController@update')->name('admin.umum.update');
+
+            Route::get('/operator/show/{id}', 'OperatorController@show')->name('admin.operator.show');
+            Route::get('/operator', 'OperatorController@index')->name('admin.operator');
+            Route::get('/operator/create/','OperatorController@create')->name('admin.operator.create');
+            Route::post('/operator','OperatorController@store')->name('admin.operator.store');
+            Route::get('/operator/delete/{id}', 'OperatorController@destroy')->name('admin.operator.destroy');
+            Route::get('/operator/edit/{id}', 'OperatorController@edit')->name('admin.operator.edit');
+            Route::post('/operator/update/{id}','OperatorController@update')->name('admin.operator.update');
 
     
         });

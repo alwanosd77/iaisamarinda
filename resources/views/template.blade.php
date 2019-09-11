@@ -36,7 +36,7 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent-4">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item ml-4 mb-0">
+            <li class="nav-item ml-4 mb-0 {{ active(['home']) }}">
               <a class="nav-link waves-effect waves-light font-weight-bold" href="/">HOME
                 <span class="sr-only">(current)</span>
               </a>
@@ -61,6 +61,8 @@
                 <a class="dropdown-item waves-effect waves-light" href="../postpage/v-2.html">Permohonan Mutasi</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Resertifikasi Apoteker</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Lowongan Pekerjaan</a>
               </div>
             </li>
             <li class="nav-item dropdown ml-4  mb-0">
@@ -72,7 +74,9 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item waves-effect waves-light" href="../author page/v-2.html">Agenda</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../author page/v-3.html">Galeri</a>
+                <a class="dropdown-item waves-effect waves-light" href="../author page/v-3.html">Artikel</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Galeri</a>
               </div>
             </li>
             <li class="nav-item dropdown ml-4  mb-0">
@@ -84,6 +88,8 @@
                 <a class="dropdown-item waves-effect waves-light" href="{{route('kontak',$kontakes->slug)}}">{{$kontakes->judul }}</a>
                 <div class="dropdown-divider"></div>
                 @endforeach
+                <a class="dropdown-item waves-effect waves-light" href="">KONTAK KAMI</a>
+                <div class="dropdown-divider"></div>
             </li>
             <li class="nav-item ml-4 mb-0">
               <a class="nav-link waves-effect waves-light font-weight-bold" href="#">PERATURAN
@@ -101,13 +107,13 @@
     <!-- Navbar -->
 
     <!-- Intro Section -->
-    @yield('intro')
     <!-- Intro -->
 
   </header>
   <!-- Navigation -->
 
   <!-- Main layout -->
+    @yield('intro')
   <main>
     @yield('main')
      <!-- Sidebar -->
@@ -177,13 +183,12 @@
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
           <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i class="fas fa-home mr-3"></i> {{$umum->alamat}}</p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+            <i class="fas fa-envelope mr-3"></i> {{$umum->email}}</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-          <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fas fa-phone mr-3"></i> {{$umum->telp}}</p>
+          
         </div>
         <!-- Fourth column -->
 
@@ -213,22 +218,22 @@
           <div class="social-section text-center text-md-left">
             <ul class="list-unstyled list-inline">
               <li class="list-inline-item mx-0">
-                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4">
+                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="{{$umum->facebook}}">
                   <i class="fab fa-facebook-f"></i>
                 </a>
               </li>
               <li class="list-inline-item mx-0">
-                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4">
+                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="{{$umum->twitter}}">
                   <i class="fab fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item mx-0">
-                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4">
+                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="{{$umum->instagram}}">
                   <i class="fab fa-instagram"></i>
                 </a>
               </li>
               <li class="list-inline-item mx-0">
-                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4">
+                <a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="{{$umum->youtube}}">
                   <i class="fab fa-youtube"></i>
                 </a>
               </li>
@@ -259,12 +264,7 @@
   <!-- Custom scripts -->
   <script type="text/javascript">
     // Animation
-    new WOW().init();
-
-    // MDB Lightbox Init
-    $(function () {
-      $("#mdb-lightbox-ui").load("{{asset('/mdb-addons/mdb-lightbox-ui.html')}}");
-    });
+    
 
   </script>
   @yield('script')

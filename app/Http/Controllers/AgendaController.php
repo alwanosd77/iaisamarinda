@@ -22,7 +22,7 @@ class AgendaController extends Controller
         if(request()->ajax()){
             $agenda = Agenda::all();
             return datatables()->of($agenda)->editColumn('waktu',function($agenda){
-                return $agenda->waktu->isoFormat('DD MMMM YYYY , hh:mm');
+                return $agenda->waktu->isoFormat('DD MMMM YYYY , hh:mm a');
             })->addColumn('action',function($data){
                 $button = '<a href="/agenda/'.$data->slug.'" target="_blank"><button type="button" name="view" class="btn btn-success btn-sm m-auto"> <i class="fa fa-eye"></i>Visit</button>
                     </a>';

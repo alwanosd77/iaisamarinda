@@ -7,7 +7,11 @@
           <hr>
           <!-- Section: Recent posts -->
           <section class="section mb-5">
-
+        @if($countAgenda > 0)
+                    @for($i=0;$i<$countAgenda;$i++)
+                      @if($i==3)
+                        @break
+                      @endif
             <div class="post-border">
 
               <!-- Grid row -->
@@ -19,10 +23,10 @@
                   <!-- Post data -->
                   <div class="">
                     <p class="mb-1">
-                      <a href="#!" class="text-hover font-weight-bold black-text">This is news title</a>
+                      <a href="#!" class="text-hover font-weight-bold black-text">{{$agenda[$i]->judul}}</a>
                     </p>
                     <p class="font-small grey-text">
-                      <em>July 22, 2017</em>
+                      <em>{{$agenda[$i]->waktu->isoFormat('DD MMMM YYYY , hh:mm a')}}</em>
                     </p>
                   </div>
 
@@ -33,127 +37,9 @@
               <!-- Grid row -->
 
             </div>
+            @endfor
+            @endif
 
-            <div class="post-border">
-
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-                <!-- Grid column -->
-
-                <!-- Second column -->
-                <div class="col-12 mb-1">
-
-                  <!-- Post data -->
-                  <div class="">
-                    <p class="mb-1">
-                      <a href="#!" class="text-hover font-weight-bold black-text">This is news title</a>
-                    </p>
-                    <p class="font-small grey-text">
-                      <em>July 22, 2017</em>
-                    </p>
-
-                  </div>
-
-                </div>
-                <!-- Second column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
-
-            <div class="post-border">
-
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-                <!-- Grid column -->
-
-                <!-- Second column -->
-                <div class="col-12 mb-1">
-
-                  <!-- Post data -->
-                  <div class="">
-                    <p class="mb-1">
-                      <a href="#!" class="text-hover font-weight-bold black-text">This is news title</a>
-                    </p>
-                    <p class="font-small grey-text">
-                      <em>July 22, 2017</em>
-                    </p>
-                  </div>
-
-                </div>
-                <!-- Second column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
-
-            <div class="post-border">
-
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-                
-                <!-- Grid column -->
-
-                <!-- Second column -->
-                <div class="col-12 mb-1">
-
-                  <!-- Post data -->
-                  <div class="">
-                    <p class="mb-1">
-                      <a href="#!" class="text-hover font-weight-bold black-text">This is news title</a>
-                    </p>
-                    <p class="font-small grey-text">
-                      <em>July 22, 2017</em>
-                    </p>
-
-                  </div>
-
-                </div>
-                <!-- Second column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
-
-            <div class="post-border">
-
-              <!-- Grid row -->
-              <div class="row">
-
-                <!-- Grid column -->
-               
-                <!-- Grid column -->
-
-                <!-- Second column -->
-                <div class="col-12 mb-1">
-
-                  <!-- Post data -->
-                  <div class="">
-                    <p class="mb-1">
-                      <a href="#!" class="text-hover font-weight-bold black-text">This is news title</a>
-                    </p>
-                    <p class="font-small grey-text">
-                      <em>July 22, 2017</em>
-                    </p>
-
-                  </div>
-
-                </div>
-                <!-- Second column -->
-
-              </div>
-              <!-- Grid row -->
-
-            </div>
 
           </section>
 
@@ -276,4 +162,38 @@
 
           </section>
           <!-- Section: Recent posts -->
+          <!-- Section: Location -->
+          <hr>
+          <p class="font-weight-bold dark-grey-text text-center spacing">
+            <strong>LOCATION</strong>
+          </p>
+          <hr>
+          <section class="mb-5">
+
+            <!-- Grid row -->
+            <div class="row mt-4">
+              <!-- Grid column -->
+              <div class="col-md-12">
+              <style>
+  .google-maps {
+  position: relative;
+  padding-bottom: 75%; // This is the aspect ratio
+  height: 0;
+  overflow: hidden;
+  }
+  .google-maps iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  }
+  </style>
+  <div class="google-maps">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31917.43320488488!2d117.12534667292213!3d-0.47855816327464595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df679e6769bd8d3%3A0xb6888ef6d63cc1d3!2sSekertariat%20Ikatan%20Apoteker%20Indonesia%20Pengurus%20Cabang%20Samarinda!5e0!3m2!1sen!2sid!4v1568230672784!5m2!1sen!2sid" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+  </div>
+
+              </div>
+            </div>
+          </section>
         </div>

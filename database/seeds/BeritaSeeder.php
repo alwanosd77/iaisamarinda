@@ -19,7 +19,7 @@ class BeritaSeeder extends Seeder
                 'slug' =>Str::slug('Berita A', '-'),
                 'preview'=>'Berita A',
                 'isi' => 'ini adalah Berita A',
-                'cover' => '2397615.jpg',
+                'cover' => '2596839.jpg',
                 'sumber' => 'Prof.awda',
                 'user_id' => 1,
                 'created_at'=>Carbon::now(),
