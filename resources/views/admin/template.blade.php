@@ -111,6 +111,11 @@
                                         <span>Tautan</span>
                                     
                                 </a></li>
+                                <li class="{{ active(['adminlowongan','adminlowongan.*']) }}"><a class="nav-link" href="{{route('admin.lowongan')}}">
+                                    <i class="fas fa-briefcase"></i>
+                                        <span>Lowongan</span>
+                                    
+                                </a></li>
                                 
                             </ul>
                         </li>

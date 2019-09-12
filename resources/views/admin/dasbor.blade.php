@@ -221,7 +221,7 @@
                             @break
                             @endif
                             <div class="col-6 col-sm-3 col-lg-3 mb-4 mb-md-0">
-                                <div class="avatar-item mb-0">
+                                <div class=" mb-0">
                                     <a href="{{asset('img/album/'.$photo[$i]->album->judul.'/'.$photo[$i]->photo)}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-lg-3">
                                     <img alt="image" src="{{asset('img/album/'.$photo[$i]->album->judul.'/'.$photo[$i]->photo)}}"
                                         class="img-fluid">

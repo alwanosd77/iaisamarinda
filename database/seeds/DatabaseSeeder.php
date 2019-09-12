@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PeraturanSeeder::class);
         $this->call(UnduhanSeeder::class);
         $this->call(UmumSeeder::class);
+        $this->call(LowonganSeeder::class);
     }
 }

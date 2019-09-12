@@ -25,6 +25,14 @@ Route::group(['middleware'=>['web']],function(){
             Route::get('/kontak/edit/{id}', 'KontakController@edit')->name('admin.kontak.edit');
             Route::post('/kontak/update/{id}','KontakController@update')->name('admin.kontak.update');
 
+            Route::get('/lowongan/show/{id}', 'LowonganController@show')->name('admin.lowongan.show');
+            Route::get('/lowongan', 'LowonganController@index')->name('admin.lowongan');
+            Route::get('/lowongan/create/','LowonganController@create')->name('admin.lowongan.create');
+            Route::post('/lowongan','LowonganController@store')->name('admin.lowongan.store');
+            Route::get('/lowongan/delete/{id}', 'LowonganController@destroy')->name('admin.lowongan.destroy');
+            Route::get('/lowongan/edit/{id}', 'LowonganController@edit')->name('admin.lowongan.edit');
+            Route::post('/lowongan/update/{id}','LowonganController@update')->name('admin.lowongan.update');
+
             Route::get('/profil/show/{id}', 'ProfilController@show')->name('admin.profil.show');
             Route::get('/profil', 'ProfilController@index')->name('admin.profil');
             Route::get('/profil/create/','ProfilController@create')->name('admin.profil.create');
@@ -135,6 +143,8 @@ Route::get('/download/{peraturan}/{filename}/{name}', 'UnduhanController@downloa
 Route::get('/', 'FrontController@index')->name('home');
 Route::get('/profil/{slug}', 'FrontController@profil')->name('profil');
 Route::get('/kontak/{slug}', 'FrontController@kontak')->name('kontak');
+Route::get('/kontak-kami', 'FrontController@kontakkami')->name('kontak-kami');
+Route::post('/kontak-kami', 'FrontController@kontakkamiStore')->name('kontak-kami.store');
 
 
 

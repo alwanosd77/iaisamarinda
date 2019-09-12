@@ -15,7 +15,6 @@
   <!-- Material Design Bootstrap -->
   <link href="{{asset('mdb/css/mdb.min.css')}}" rel="stylesheet">
   <!-- Your custom scripts -->
-  
   @yield('css')
 </head>
 
@@ -88,7 +87,7 @@
                 <a class="dropdown-item waves-effect waves-light" href="{{route('kontak',$kontakes->slug)}}">{{$kontakes->judul }}</a>
                 <div class="dropdown-divider"></div>
                 @endforeach
-                <a class="dropdown-item waves-effect waves-light" href="">KONTAK KAMI</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('kontak-kami')}}">KONTAK KAMI</a>
                 <div class="dropdown-divider"></div>
             </li>
             <li class="nav-item ml-4 mb-0">
