@@ -14,18 +14,18 @@
 					
 					<!-- Title -->
 					<h2 class="text-center font-weight-bold mt-3">
-					<strong>{{$beritaShow->judul}}</strong>
+					<strong>{{$artikelIsi->judul}}</strong>
 					</h2>
 					<hr class="orange title-hr">
 					<div class="post-data mb-4">
 						<p class="font-small dark-grey-text mb-1">
-						<strong>Diupload Oleh:</strong> {{$beritaShow->user->name}}</p>
+						<strong>Diupload Oleh: </strong> {{$artikelIsi->user->name}}</p>
 						<p class="font-small dark-grey-text mb-1">
-						<strong>Sumber:</strong> {{$beritaShow->sumber}}</p>
+						<strong>Ditulis Oleh: </strong> {{$artikelIsi->penulis}}</p>
 						<p class="font-small grey-text">
-						<i class="far fa-clock-o"></i> {{$beritaShow->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
+						<i class="far fa-clock-o"></i> {{$artikelIsi->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
 					</div>
-					<img src="{{asset('img/cover/berita/'.$beritaShow->cover)}}" class="img-fluid z-depth-1 rounded"
+					<img src="{{asset('img/cover/artikel/'.$artikelIsi->cover)}}" class="img-fluid z-depth-1 rounded"
 					alt="sample image">
 					<!-- Grid row -->
 					
@@ -33,7 +33,7 @@
 					<hr>
 					<!-- Grid row -->
 					<div class="row mx-md-4 px-4 mt-3">
-						{!! $beritaShow->isi !!}
+						{!! $artikelIsi->isi !!}
 					</div>
 					<!-- Grid row -->
 					<!-- Grid row -->
@@ -50,11 +50,11 @@
 				<!-- Grid column -->
 				<div class="col-md-6 text-left mt-3">
 					<!-- Card -->
-					@if($beritaPrev >= 0)
+					@if($artikelIsiPrev >= 0)
 					<div class="card">
 						<!-- Card image -->
 						<div class="view overlay">
-							<img src="{{asset('img/cover/berita/'.$beritaAll[$beritaPrev]->cover)}}" class="card-img-top"
+							<img src="{{asset('img/cover/artikel/'.$artikelAll[$artikelIsiPrev]->cover)}}" class="card-img-top"
 							alt="Sample image">
 							<a>
 								<div class="mask rgba-white-slight"></div>
@@ -65,17 +65,17 @@
 						<div class="card-body">
 							<!-- Title -->
 							<h4 class="card-title">
-							<strong>{{$beritaAll[$beritaPrev]->judul}}</strong>
+							<strong>{{$artikelAll[$artikelIsiPrev]->judul}}</strong>
 							</h4>
 							<hr>
 							<!-- Text -->
-							<p class="card-text mb-3">{{$beritaAll[$beritaPrev]->preview}}
+							<p class="card-text mb-3">{{$artikelAll[$artikelIsiPrev]->preview}}
 							</p>
 							<p class="font-small font-weight-bold dark-grey-text mb-1">
-							<i class="far fa-clock-o"></i> {{$beritaAll[$beritaPrev]->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
-							<p class="font-small grey-text mb-0">{{$beritaAll[$beritaPrev]->user->name}}</p>
+							<i class="far fa-clock-o"></i> {{$artikelAll[$artikelIsiPrev]->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
+							<p class="font-small grey-text mb-0">{{$artikelAll[$artikelIsiPrev]->user->name}}</p>
 							<p class="text-right mb-0 font-small font-weight-bold">
-								<a href="{{route('berita.show',$beritaAll[$beritaPrev]->slug)}}">read more
+								<a href="{{route('artikel.show',$artikelAll[$artikelIsiPrev]->slug)}}">read more
 									<i class="fas fa-angle-right"></i>
 								</a>
 							</p>
@@ -89,11 +89,11 @@
 				<!-- Grid column -->
 				<div class="col-md-6 text-left mt-3">
 					<!-- Card -->
-					@if($beritaNext >= 0)
+					@if($artikelIsiNext >= 0)
 					<div class="card">
 						<!-- Card image -->
 						<div class="view overlay">
-							<img src="{{asset('img/cover/berita/'.$beritaAll[$beritaNext]->cover)}}" class="card-img-top"
+							<img src="{{asset('img/cover/artikel/'.$artikelAll[$artikelIsiNext]->cover)}}" class="card-img-top"
 							alt="Sample image">
 							<a>
 								<div class="mask rgba-white-slight"></div>
@@ -104,17 +104,17 @@
 						<div class="card-body">
 							<!-- Title -->
 							<h4 class="card-title">
-							<strong>{{$beritaAll[$beritaNext]->judul}}</strong>
+							<strong>{{$artikelAll[$artikelIsiNext]->judul}}</strong>
 							</h4>
 							<hr>
 							<!-- Text -->
-							<p class="card-text mb-3">{{$beritaAll[$beritaNext]->preview}}
+							<p class="card-text mb-3">{{$artikelAll[$artikelIsiNext]->preview}}
 							</p>
 							<p class="font-small font-weight-bold dark-grey-text mb-1">
-							<i class="far fa-clock-o"></i> {{$beritaAll[$beritaNext]->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
-							<p class="font-small grey-text mb-0">{{$beritaAll[$beritaNext]->user->name}}</p>
+							<i class="far fa-clock-o"></i> {{$artikelAll[$artikelIsiNext]->created_at->isoFormat('DD MMMM YYYY , hh:mm a')}}</p>
+							<p class="font-small grey-text mb-0">{{$artikelAll[$artikelIsiNext]->user->name}}</p>
 							<p class="text-right mb-0 font-small font-weight-bold">
-								<a href="{{route('berita.show',$beritaAll[$beritaNext]->slug)}}">read more
+								<a href="{{route('artikel.show',$artikelAll[$artikelIsiNext]->slug)}}">read more
 									<i class="fas fa-angle-right"></i>
 								</a>
 							</p>

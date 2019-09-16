@@ -55,13 +55,13 @@
               <a class="nav-link dropdown-toggle waves-effect waves-light font-weight-bold"
                 id="navbarDropdownMenuLink-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PELAYANAN</a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-2">
-                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-1.html">Permohonan Rekomendasi Praktek Apoteker</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('pelayanan.rekomendasi')}}">Permohonan Rekomendasi Praktek Apoteker</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-2.html">Permohonan Mutasi</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('pelayanan.mutasi')}}">Permohonan Mutasi</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Resertifikasi Apoteker</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('pelayanan.resertifikasi')}}">Resertifikasi Apoteker</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Lowongan Pekerjaan</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('pelayanan.lowongan')}}">Lowongan Pekerjaan</a>
               </div>
             </li>
             <li class="nav-item dropdown ml-4  mb-0">
@@ -69,13 +69,13 @@
                 id="navbarDropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">INFORMASI</a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink-3">
-                <a class="dropdown-item waves-effect waves-light" href="/berita">Berita</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('berita')}}">Berita</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../author page/v-2.html">Agenda</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('agenda')}}">Agenda</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../author page/v-3.html">Artikel</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('artikel')}}">Artikel</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item waves-effect waves-light" href="../postpage/v-3.html">Galeri</a>
+                <a class="dropdown-item waves-effect waves-light" href="{{route('album')}}">Galeri</a>
               </div>
             </li>
             <li class="nav-item dropdown ml-4  mb-0">
@@ -90,8 +90,8 @@
                 <a class="dropdown-item waves-effect waves-light" href="{{route('kontak-kami')}}">KONTAK KAMI</a>
                 <div class="dropdown-divider"></div>
             </li>
-            <li class="nav-item ml-4 mb-0">
-              <a class="nav-link waves-effect waves-light font-weight-bold" href="#">PERATURAN
+            <li class="nav-item ml-4 mb-0 {{ active(['peraturan']) }}">
+              <a class="nav-link waves-effect waves-light font-weight-bold" href="{{route('peraturan')}}">PERATURAN
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -108,11 +108,11 @@
     <!-- Intro Section -->
     <!-- Intro -->
 
+    @yield('intro')
   </header>
   <!-- Navigation -->
 
   <!-- Main layout -->
-    @yield('intro')
   <main>
     @yield('main')
      <!-- Sidebar -->
@@ -161,18 +161,11 @@
         <!-- Third column -->
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">LINKS</h6>
-          <p>
-            <a href="#!">Collaboriation</a>
-          </p>
-          <p>
-            <a href="#!">Media about me</a>
-          </p>
-          <p>
-            <a href="#!">Newsletter</a>
-          </p>
-          <p>
-            <a href="#!">Help</a>
-          </p>
+          @foreach ($link as $tautan)
+            <a href="{{$tautan->url}}" target="__blank">
+              <img src="{{asset('img/tautan/'.$tautan->banner)}}" class="img-fluid">
+            </a>
+          @endforeach
         </div>
         <!-- Third column -->
 

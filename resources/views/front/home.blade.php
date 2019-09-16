@@ -76,7 +76,10 @@
 								<p class="dark-grey-text">{{$berita[$i]->preview}}
 								</p>
 								<!-- Deep-orange -->
+								<a href="{{route('berita.show',$berita[$i]->slug)}}">
+									
 								<button type="button" class="btn btn-deep-orange btn-rounded btn-sm">Read more</button>
+								</a>
 							</div>
 							<!-- Grid column -->
 						</div>
@@ -85,9 +88,12 @@
 						@endif
 					</section>
 					<!-- Section: Blog v.3 -->
+					<a href="{{route('berita')}}">
+						
 					<button type="button" class="btn btn-deep-orange btn-rounded btn-sm ml-auto float-right">
 					Lihat Lebih Banyak <i class="fa fa-arrow-right"></i>
 					</button>
+					</a>
 				</div>
 			</div>
 			<hr class="mb-1 mt-3">
@@ -130,9 +136,12 @@
 						</div>
 					</section>
 					<!-- Section: Blog v.3 -->
+					<a href="{{route('album')}}">
+						
 					<button type="button" class="btn btn-deep-orange btn-rounded btn-sm ml-auto float-right">
 					Lihat Lebih Banyak <i class="fa fa-arrow-right"></i>
 					</button>
+					</a>
 				</div>
 			</div>
 		</div>

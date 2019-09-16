@@ -15,7 +15,7 @@ class LinkSeeder extends Seeder
         DB::table('links')->insert([
             [ 
                 'label'=>'Ikatan Apoteker Indonesia',
-                'url'=>'Pengurus Cabang Samarinda',
+                'url'=>'https://iai.id',
                 'banner'=>'banner1.jpg',
                 'slug' =>Str::slug('Ikatan Apoteker Indonesia', '-'),
             ],

@@ -1,6 +1,6 @@
 @extends('template')
 @section('intro')
-  @include('front.parallax')
+  @include('front.carousel')
 @endsection
 @section('main')
 	<div class="container mt-5 pt-3">

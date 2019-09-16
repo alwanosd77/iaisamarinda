@@ -146,15 +146,26 @@ Route::get('/kontak/{slug}', 'FrontController@kontak')->name('kontak');
 Route::get('/kontak-kami', 'FrontController@kontakkami')->name('kontak-kami');
 Route::post('/kontak-kami', 'FrontController@kontakkamiStore')->name('kontak-kami.store');
 
+Route::get('/peraturan', 'FrontController@peraturan')->name('peraturan');
 
 
+Route::get('/berita', 'FrontController@beritaIndex')->name('berita');
+Route::get('/berita/{slug}', 'FrontController@beritaShow')->name('berita.show');
 
+Route::get('/agenda', 'FrontController@agendaIndex')->name('agenda');
+Route::get('/agenda/{slug}', 'FrontController@agendaShow')->name('agenda.show');
 
-Route::get('/berita', function () {
-    return view('front.informasi.berita.index');
-});
-Route::get('/berita/1', function () {
-    return view('front.informasi.berita.show');
-});
+Route::get('/artikel', 'FrontController@artikelIndex')->name('artikel');
+Route::get('/artikel/{slug}', 'FrontController@artikelShow')->name('artikel.show');
+
+Route::get('/album', 'FrontController@albumIndex')->name('album');
+Route::get('/album/{slug}', 'FrontController@albumShow')->name('album.show');
+
+Route::get('/pelayanan/rekomendasi', 'PelayananController@rekomendasi')->name('pelayanan.rekomendasi');
+Route::get('/pelayanan/mutasi', 'PelayananController@mutasi')->name('pelayanan.mutasi');
+Route::get('/pelayanan/resertifikasi', 'PelayananController@resertifikasi')->name('pelayanan.resertifikasi');
+
+Route::get('/pelayanan/lowongan', 'PelayananController@lowongan')->name('pelayanan.lowongan');
+Route::get('/pelayanan/lowongan/{slug}', 'PelayananController@lowonganShow')->name('pelayanan.lowongan.show');
 
 Auth::routes();

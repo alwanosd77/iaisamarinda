@@ -14,7 +14,7 @@
     }
 
 </style>
-    <div style="background-color: rgba(231, 231, 231,0.5)">
+    <div style="background-image: url({{asset('img/slider/wrapper.jpg')}});">
     
     <div class="container">
     
